@@ -13,10 +13,12 @@ class Profile(models.Model):
     def __str__(self):
         return self.user.username
 
+
 @receiver(post_save, sender=User)
 def create_profile(sender, instance, created, **kwargs):
     if created:
         user_profile = Profile(user=instance)
         user_profile.save()
-
-
+        # follow herself/himself automatically
+        user_profile.follows.add(instance.profile)
+        user_profile.save()
