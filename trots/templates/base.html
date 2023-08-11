@@ -4,15 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Untoxitter</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
-    <section>
-        <h1>Untoxitter</h1>
-        <p>A small tw*** but without the toxicity</p>
+    <section class="hero is-small is-success mb-4">
+        <div class="hero-body">
+            <h1 class="title is-1">Untoxitter</h1>
+            <p class="subtitle is-4">A small tw*** but without the toxicity</p>
+        </div>
     </section>
-    <div>
+    <div class="container">
+        <div class="columns">
         {% block content %}
         {% endblock %}
+        </div>
     </div>
 </body>
 </html>
