@@ -7,6 +7,15 @@
                 {{ profile.user.username|upper }}'s trots
             </h1>
         </div>
+        <div class="buttons has-addons">
+            {% if profile in user.profile.follows.all %}
+                <button class="button is-success is-static">Follow</button>
+                <button class="button is-danger">Unfollow</button>
+            {% else %}           
+                <button class="button is-success">Follow</button>
+                <button class="button is-danger">Unfollow</button>
+             {% endif %}
+        </div>
     </div>
 
     <div class="column is-one-third">
