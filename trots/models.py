@@ -22,3 +22,12 @@ def create_profile(sender, instance, created, **kwargs):
         # follow herself/himself automatically
         user_profile.follows.add(instance.profile)
         user_profile.save()
+
+
+class Trot(models.Model):
+    user = models.ForeignKey(User, related_name="trots", on_delete=models.DO_NOTHING)
+    body = models.CharField(max_length=166)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.user} on {self.created_at:%d.%m.%Y}: {self.body[:23]}"
