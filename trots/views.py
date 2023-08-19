@@ -1,16 +1,16 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .forms import TrotForm
 from .models import Profile
 
 
 def dashboard(request):
+    form = TrotForm(request.POST or None)
     if request.method == "POST":
-        form = TrotForm(request.POST)
         if form.is_valid():
             trot = form.save(commit=False)
             trot.user = request.user
             trot.save()
-    form = TrotForm()
+            return redirect("trots:dashboard")    
     return render(request, "trots/dashboard.html", {"form": form})
 
 
