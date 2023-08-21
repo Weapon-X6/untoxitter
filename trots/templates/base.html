@@ -7,12 +7,14 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
 </head>
 <body>
-    <section class="hero is-small is-success mb-4">
-        <div class="hero-body">
-            <h1 class="title is-1">Untoxitter</h1>
-            <p class="subtitle is-4">A small tw*** but without the toxicity</p>
-        </div>
-    </section>
+    <a href="{% url 'trots:dashboard' %}">
+        <section class="hero is-small is-success mb-4">
+            <div class="hero-body">
+                <h1 class="title is-1">Untoxitter</h1>
+                <p class="subtitle is-4">A small tw*** but without the toxicity</p>
+            </div>
+        </section>
+    </a>
     <div class="container">
         <div class="columns">
         {% block content %}

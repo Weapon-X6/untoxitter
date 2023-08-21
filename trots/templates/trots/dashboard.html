@@ -15,6 +15,20 @@
     </div> 
 
     <div class="column is-one-third">
+        <div class="block">
+            <a href="{% url 'trots:profile_list' %}">
+                <button class="button is-dark is-outlined is-fullwidth">
+                    All Profiles
+                </button>
+            </a>
+        </div>
+        <div class="block">
+            <a href="{% url 'trots:profile' request.user.profile.id %}">
+                <button class="button is-success is-light is-outlined is-fullwidth">
+                    My Profile
+                </button>
+            </a>
+        </div>
         <form method="post">
             {% csrf_token %}
             {{ form.as_p }}
