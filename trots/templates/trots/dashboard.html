@@ -2,15 +2,13 @@
 
 {% block content %}
     <div class="column">
-        {% for following in user.profile.follows.all %}
-            {% for trot in following.user.trots.all %}
-                <div class="box">
-                    {{ trot.body }}
-                    <span class="is-small has-text-grey-light">
-                        {{ trot.created_at }} by {{ trot.user.username }}
-                    </span>
-                </div>
-            {% endfor %}
+        {% for trot in trots %}
+            <div class="box">
+                {{ trot.body }}
+                <span class="is-small has-text-grey-light">
+                    {{ trot.created_at }} by {{ trot.user.username }}
+                </span>
+            </div>
         {% endfor %}
     </div> 
 

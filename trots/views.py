@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from .forms import TrotForm
-from .models import Profile
+from .models import Profile, Trot
 
 
 def dashboard(request):
@@ -10,8 +10,15 @@ def dashboard(request):
             trot = form.save(commit=False)
             trot.user = request.user
             trot.save()
-            return redirect("trots:dashboard")    
-    return render(request, "trots/dashboard.html", {"form": form})
+            return redirect("trots:dashboard")
+
+    followed_trots = Trot.objects.filter(
+        user__profile__in=request.user.profile.follows.all()
+    ).order_by("-created_at")
+
+    return render(
+        request, "trots/dashboard.html", {"form": form, "trots": followed_trots}
+    )
 
 
 def profile_list(request):
