@@ -12,9 +12,12 @@ def dashboard(request):
             trot.save()
             return redirect("trots:dashboard")
 
-    followed_trots = Trot.objects.filter(
-        user__profile__in=request.user.profile.follows.all()
-    ).order_by("-created_at")
+    if request.user.is_active:
+        followed_trots = Trot.objects.filter(
+            user__profile__in=request.user.profile.follows.all()
+        ).order_by("-created_at")
+    else:
+        followed_trots = Trot.objects.all()
 
     return render(
         request, "trots/dashboard.html", {"form": form, "trots": followed_trots}

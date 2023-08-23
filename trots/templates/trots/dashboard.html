@@ -12,6 +12,7 @@
         {% endfor %}
     </div> 
 
+    {% if request.user.is_active %}
     <div class="column is-one-third">
         <div class="block">
             <a href="{% url 'trots:profile_list' %}">
@@ -35,4 +36,5 @@
         </button>
         </form>
     </div>
+    {% endif %}
 {% endblock %}
