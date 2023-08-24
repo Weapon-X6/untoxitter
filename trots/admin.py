@@ -12,6 +12,7 @@ class UserAdmin(admin.ModelAdmin):
     model = User
     fields = ["username"]
     inlines = [ProfileInline]
+    list_filter = ["username"]
 
 
 admin.site.unregister(User)
