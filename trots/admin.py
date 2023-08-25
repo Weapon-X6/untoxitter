@@ -15,7 +15,12 @@ class UserAdmin(admin.ModelAdmin):
     list_filter = ["username"]
 
 
+class TrotAdmin(admin.ModelAdmin):
+    model = Trot
+    list_filter = ["user"]
+
+
 admin.site.unregister(User)
 admin.site.register(User, UserAdmin)
 admin.site.unregister(Group)
-admin.site.register(Trot)
+admin.site.register(Trot, TrotAdmin)
